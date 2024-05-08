@@ -43,6 +43,14 @@ final class MyFirstXCUITest: XCTestCase {
         
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testUiTestRecorderForWebViewOpen() {
+        let app = XCUIApplication()
+        app.toolbars["Toolbar"].buttons["Settings"].tap()
+        app.tables.staticTexts["Donate"].tap()
+        let webView = XCUIApplication().webViews.firstMatch
+        XCTAssertTrue(webView.exists, "WebView is not present")
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
